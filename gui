@@ -32,7 +32,7 @@ local ToolsB = Instance.new("TextButton")
 local setting = {
 	Antifling = false,
 	AntiVelocity = false,
-	AntiAnvil = false, 
+	AntiAnvil = false,
 	FakeAccs = false,
 	AntiSpinner = false,
 }
@@ -325,7 +325,7 @@ ToolsB.TextScaled = true
 ToolsB.TextSize = 14.000
 ToolsB.TextWrapped = true
 
-local function toggleButton(buttonName, colorFrame)
+local function TButton(buttonName, colorFrame)
 	setting[buttonName] = not setting[buttonName] 
 	if setting[buttonName] then
 		colorFrame.BackgroundColor3 = Color3.fromRGB(0, 153, 0) 
@@ -335,32 +335,33 @@ local function toggleButton(buttonName, colorFrame)
 end
 
 Antifling.MouseButton1Click:Connect(function()
-	toggleButton("Antifling", fccolor)
+	TButton("Antifling", fccolor)
 end)
 
 AntiVelocity.MouseButton1Click:Connect(function()
-	toggleButton("AntiVelocity", fccolor1)
+	TButton("AntiVelocity", fccolor1)
 end)
 
 AntiAnvil.MouseButton1Click:Connect(function()
-	toggleButton("AntiAnvil", fccolor2)
+	TButton("AntiAnvil", fccolor2)
 end)
 
 FakeAccs.MouseButton1Click:Connect(function()
-	toggleButton("FakeAccs", fccolor3)
+	TButton("FakeAccs", fccolor3)
 end)
 
 AntiSpinner.MouseButton1Click:Connect(function()
-	toggleButton("AntiSpinner", fccolor4)
+	TButton("AntiSpinner", fccolor4)
 end)
 
+
 MainB.MouseButton1Click:Connect(function()
-	-- Hide all tabs first
 	Main.Visible = false
 	Tools.Visible = false
 	Global.Visible = false
 	Misc.Visible = false
 	Keybinds.Visible = false
+
 	Main.Visible = true
 end)
 
@@ -395,3 +396,16 @@ KeybindsB.MouseButton1Click:Connect(function()
 	Misc.Visible = false
 	Keybinds.Visible = true
 end)
+
+local function changeLineColor()
+	while true do
+		local r = math.random()
+		local g = math.random()
+		local b = math.random()
+
+		Line.BackgroundColor3 = Color3.fromRGB(r * 255, g * 255, b * 255)
+		task.wait(0.8)
+	end
+end
+
+task.spawn(changeLineColor)
